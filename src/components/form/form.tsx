@@ -1,5 +1,174 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { IClient } from '../../types/client.type';
+import { initialClient } from '../../constants/initialState';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 export const Form: React.FC = () => {
-  return <h1>Test</h1>;
+  const [client, setClient] = useState<IClient>(initialClient);
+  return (
+    <Container>
+      <text>Vendedor: Márcia Brasil</text>
+      <form className="Produto">
+        <Row>
+          <Col sm="8">
+            <label htmlFor="codigo">Código:</label>
+            <input
+              className="codigo"
+              type="number"
+              pattern="\d*"
+              name="codigo"
+              placeholder="codigo"
+              value={client.codigo}
+              onChange={(evt) =>
+                setClient({ ...client, codigo: evt.target.value })
+              }></input>
+          </Col>
+        </Row>
+        <Row>
+          <Col sm="8">
+            <label htmlFor="nome">Nome:</label>
+            <input
+              className="nome"
+              type="text"
+              name="nome"
+              placeholder="Nome"
+              value={client.nome}
+              onChange={(evt) =>
+                setClient({ ...client, nome: evt.target.value })
+              }></input>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label className="codigoPostal" htmlFor="codigoPostal">
+              Código Postal:
+            </label>
+            <input
+              className="codigoPostal"
+              type="number"
+              pattern="\d*"
+              name="codigoPostal"
+              placeholder="Código Postal"
+              value={client.codigoPostal}
+              onChange={(evt) =>
+                setClient({ ...client, codigoPostal: evt.target.value })
+              }
+              //onBlur={this.onBlurCep}
+            />
+          </Col>
+          <Col>
+            <label htmlFor="morada">Morada:</label>
+            <input
+              className="morada"
+              name="morada"
+              type="text"
+              placeholder="morada"
+              value={client.morada}
+              onChange={(evt) =>
+                setClient({ ...client, morada: evt.target.value })
+              }></input>
+          </Col>
+          <Col>
+            <label htmlFor="numeroPorta">numero da porta:</label>
+            <input
+              className="numeroPorta"
+              name="numeroPorta"
+              type="text"
+              placeholder="numeroPorta"
+              value={client.numeroDaPorta}
+              onChange={(evt) =>
+                setClient({ ...client, numeroDaPorta: evt.target.value })
+              }></input>
+          </Col>
+          <Col>
+            <input
+              className="localidade"
+              name="localidade"
+              type="hidden"
+              placeholder="localidade"
+              value={client.localidade}
+              onChange={(evt) =>
+                setClient({ ...client, localidade: evt.target.value })
+              }></input>
+          </Col>
+          <Col>
+            <input
+              className="concelho"
+              name="concelho"
+              type="hidden"
+              placeholder="concelho"
+              value={client.concelho}
+              onChange={(evt) =>
+                setClient({ ...client, concelho: evt.target.value })
+              }></input>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <label className="contribuinte" htmlFor="contribuinte">
+              Contribuinte:
+            </label>
+            <input
+              className="contribuinte"
+              name="contribuinte"
+              type="number"
+              pattern="\d*"
+              placeholder="contribuinte"
+              value={client.contribuinte}
+              onChange={(evt) =>
+                setClient({ ...client, contribuinte: evt.target.value })
+              }></input>
+          </Col>
+          <Col>
+            <label className="contato" htmlFor="contato">
+              Contato:
+            </label>
+            <input
+              className="contato"
+              name="contato"
+              type="number"
+              pattern="\d*"
+              placeholder="contato"
+              value={client.contato}
+              onChange={(evt) =>
+                setClient({ ...client, contato: evt.target.value })
+              }></input>
+          </Col>
+          <Col>
+            <label className="email" htmlFor="email">
+              email:
+            </label>
+            <input
+              className="email"
+              name="email"
+              type="email"
+              placeholder="email"
+              value={client.email}
+              onChange={(evt) =>
+                setClient({ ...client, email: evt.target.value })
+              }></input>
+          </Col>
+        </Row>
+      </form>
+      {/* <ProductList products={this.state.products} onChange={this.onChange} />
+      <Total products={this.state.products} />
+      <Iva products={this.state.products} />
+      <TotalComIva products={this.state.products} />
+      <PDFDownloadLink
+        document={<MyDocument data={this.state} />}
+        fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
+        style={{
+          textDecoration: 'none',
+          padding: '10px',
+          color: '#4a4a4a',
+          backgroundColor: '#f2f2f2',
+          border: '1px solid #4a4a4a',
+        }}>
+        {({ blob, url, loading, error }) =>
+          loading ? 'Loading document...' : 'Download Pdf'
+        }
+      </PDFDownloadLink> */}
+    </Container>
+  );
 };
