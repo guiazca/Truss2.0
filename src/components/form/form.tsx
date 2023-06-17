@@ -190,9 +190,7 @@ export const Form: React.FC = () => {
       <ProductForm products={products} setProducts={setProducts} />
       <Total products={products} />
       <TotalComIva products={products} />
-      {/* <ProductList products={this.state.products} onChange={this.onChange} />
-      <Total products={this.state.products} />
-      <PDFDownloadLink
+      {/* <PDFDownloadLink
         document={<MyDocument data={this.state} />}
         fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
         style={{
