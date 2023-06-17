@@ -330,7 +330,7 @@ export const Products: IProduct[] = [
       codigo: "211 045",
       count: undefined,
       nome: "Fluid Deep Reconstruction 500ml",
-      price: 82.2,
+      price: 83.1,
       subLinha: "RECOVERY ESSENTIALS",
       estoque: true,
     },
