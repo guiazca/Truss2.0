@@ -12,10 +12,10 @@ export const ProductForm: React.FC<IProductsForm> = ({
   setProducts,
 }) => {
   const handleProductChange = (index: number, value: number) => {
-    const updatedProducts = [...products]; // Cria uma cópia do array de produtos
-    updatedProducts[index].count = value; // Atualiza o valor do count para o produto específico
+    const updatedProducts = [...products];
+    updatedProducts[index].count = value;
 
-    setProducts(updatedProducts); // Atualiza o estado com o novo array de produtos
+    setProducts(updatedProducts);
   };
 
   return (
