@@ -3,9 +3,15 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { IClient } from '../../types/client.type';
 import { initialClient } from '../../constants/initialState';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import { IProduct } from '../../types/product.type';
+import { Products } from '../../constants/productsList';
+import { ProductForm } from '../productForm/ProductForm';
+import { Total } from '../productForm/TotalCalc';
 
 export const Form: React.FC = () => {
   const [client, setClient] = useState<IClient>(initialClient);
+  const [products, setProducts] = useState<IProduct[]>(Products);
+  const [total, setTotal] = useState<number>(0);
   return (
     <Container>
       <text>Vendedor: Márcia Brasil</text>
@@ -151,6 +157,8 @@ export const Form: React.FC = () => {
           </Col>
         </Row>
       </form>
+      <ProductForm products={products} setProducts={setProducts} />
+      <Total products={products} />
       {/* <ProductList products={this.state.products} onChange={this.onChange} />
       <Total products={this.state.products} />
       <Iva products={this.state.products} />

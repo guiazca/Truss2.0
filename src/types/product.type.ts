@@ -1,8 +1,6 @@
-import { IClient } from "./client.type";
-
 export interface IProduct {
     codigo: string,
-    count: string,
+    count: number | undefined,
     nome: string,
     price: number,
     linha?: string,
