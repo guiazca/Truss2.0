@@ -9,10 +9,27 @@ import { ProductForm } from '../productForm/ProductForm';
 import { Total } from '../productForm/TotalCalc';
 import { TotalComIva } from '../productForm/TotalComIva';
 import axios from 'axios';
+import { PDFFile } from '../pdfFile/pdfFile';
 
 export const Form: React.FC = () => {
   const [client, setClient] = useState<IClient>(initialClient);
   const [products, setProducts] = useState<IProduct[]>(Products);
+  const [representante, setRepresentante] = useState<string>('Marcia Brasil');
+
+  const handleChange = (event: any) => {
+    setRepresentante(event.target.value);
+  };
+
+  const representantes = [
+    'Márcia Brasil',
+    'Alexsandro Viana',
+    'Ana Almeida',
+    'Cesar',
+    'Edilene',
+    'Elen Oliveira',
+    'Paula Paulino',
+    'Priscila Lopes',
+  ];
 
   const onBlurCep = (codigoPostal: string) => {
     axios
@@ -35,7 +52,16 @@ export const Form: React.FC = () => {
 
   return (
     <Container>
-      <text>Vendedor: Márcia Brasil</text>
+      <div>
+        <label htmlFor="vendedor">Vendedor:</label>
+        <select id="vendedor" value={representante} onChange={handleChange}>
+          {representantes.map((nome, index) => (
+            <option key={index} value={nome}>
+              {nome}
+            </option>
+          ))}
+        </select>
+      </div>
       <form className="Produto">
         <Row>
           <Col sm="8">
@@ -190,8 +216,14 @@ export const Form: React.FC = () => {
       <ProductForm products={products} setProducts={setProducts} />
       <Total products={products} />
       <TotalComIva products={products} />
-      {/* <PDFDownloadLink
-        document={<MyDocument data={this.state} />}
+      <PDFDownloadLink
+        document={
+          <PDFFile
+            products={products}
+            client={client}
+            representante={representante}
+          />
+        }
         fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
         style={{
           textDecoration: 'none',
@@ -200,10 +232,8 @@ export const Form: React.FC = () => {
           backgroundColor: '#f2f2f2',
           border: '1px solid #4a4a4a',
         }}>
-        {({ blob, url, loading, error }) =>
-          loading ? 'Loading document...' : 'Download Pdf'
-        }
-      </PDFDownloadLink> */}
+        {({ loading }) => (loading ? 'Loading document...' : 'Download Pdf')}
+      </PDFDownloadLink>
     </Container>
   );
 };
