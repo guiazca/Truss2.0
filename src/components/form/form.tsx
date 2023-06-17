@@ -67,7 +67,7 @@ export const Form: React.FC = () => {
         <Row>
           <Col sm="8">
             <label htmlFor="codigo">Código:</label>
-            <input
+            <StyledInput
               className="codigo"
               type="number"
               pattern="\d*"
@@ -83,7 +83,7 @@ export const Form: React.FC = () => {
         <Row>
           <Col sm="8">
             <label htmlFor="nome">Nome:</label>
-            <input
+            <StyledInput
               className="nome"
               type="text"
               name="nome"
@@ -100,7 +100,7 @@ export const Form: React.FC = () => {
             <label className="codigoPostal" htmlFor="codigoPostal">
               Código Postal:
             </label>
-            <input
+            <StyledInput
               className="codigoPostal"
               type="number"
               pattern="\d*"
@@ -115,7 +115,7 @@ export const Form: React.FC = () => {
           </Col>
           <Col>
             <label htmlFor="morada">Morada:</label>
-            <input
+            <StyledInput
               className="morada"
               name="morada"
               type="text"
@@ -128,7 +128,7 @@ export const Form: React.FC = () => {
           </Col>
           <Col>
             <label htmlFor="numeroPorta">numero da porta:</label>
-            <input
+            <StyledInput
               className="numeroPorta"
               name="numeroPorta"
               type="text"
@@ -140,7 +140,7 @@ export const Form: React.FC = () => {
             />
           </Col>
           <Col>
-            <input
+            <StyledInput
               className="localidade"
               name="localidade"
               type="hidden"
@@ -152,7 +152,7 @@ export const Form: React.FC = () => {
             />
           </Col>
           <Col>
-            <input
+            <StyledInput
               className="concelho"
               name="concelho"
               type="hidden"
@@ -169,7 +169,7 @@ export const Form: React.FC = () => {
             <label className="contribuinte" htmlFor="contribuinte">
               Contribuinte:
             </label>
-            <input
+            <StyledInput
               className="contribuinte"
               name="contribuinte"
               type="number"
@@ -185,7 +185,7 @@ export const Form: React.FC = () => {
             <label className="contato" htmlFor="contato">
               Contato:
             </label>
-            <input
+            <StyledInput
               className="contato"
               name="contato"
               type="number"
@@ -201,7 +201,7 @@ export const Form: React.FC = () => {
             <label className="email" htmlFor="email">
               email:
             </label>
-            <input
+            <StyledInput
               className="email"
               name="email"
               type="email"
@@ -245,4 +245,9 @@ const ContainerBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+`;
+
+const StyledInput = styled.input`
+  margin-top: 5px;
+  margin-left: 5px;
 `;
