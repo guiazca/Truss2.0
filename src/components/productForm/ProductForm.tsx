@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { IProduct } from '../../types/product.type';
+import { styled } from 'styled-components';
 
 export interface IProductsForm {
   products: IProduct[];
@@ -23,8 +24,8 @@ export const ProductForm: React.FC<IProductsForm> = ({
         <>
           {product.subLinha ? <h3>{product.subLinha}</h3> : ''}
           <div key={i} className="Produto">
-            <input
-              style={{ width: 25, height: 14 }}
+            <SyledInput
+              style={{ width: 35, height: 14 }}
               className="inputQTD"
               type="number"
               pattern="\d*"
@@ -43,3 +44,9 @@ export const ProductForm: React.FC<IProductsForm> = ({
     </div>
   );
 };
+
+const SyledInput = styled.input`
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 100px;
+`;
