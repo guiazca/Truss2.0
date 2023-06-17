@@ -10,6 +10,7 @@ import { Total } from '../productForm/TotalCalc';
 import { TotalComIva } from '../productForm/TotalComIva';
 import axios from 'axios';
 import { PDFFile } from '../pdfFile/pdfFile';
+import styled from 'styled-components';
 
 export const Form: React.FC = () => {
   const [client, setClient] = useState<IClient>(initialClient);
@@ -214,26 +215,34 @@ export const Form: React.FC = () => {
         </Row>
       </form>
       <ProductForm products={products} setProducts={setProducts} />
-      <Total products={products} />
-      <TotalComIva products={products} />
-      <PDFDownloadLink
-        document={
-          <PDFFile
-            products={products}
-            client={client}
-            representante={representante}
-          />
-        }
-        fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
-        style={{
-          textDecoration: 'none',
-          padding: '10px',
-          color: '#4a4a4a',
-          backgroundColor: '#f2f2f2',
-          border: '1px solid #4a4a4a',
-        }}>
-        {({ loading }) => (loading ? 'Loading document...' : 'Download Pdf')}
-      </PDFDownloadLink>
+      <ContainerBar>
+        <Total products={products} />
+        <TotalComIva products={products} />
+        <PDFDownloadLink
+          document={
+            <PDFFile
+              products={products}
+              client={client}
+              representante={representante}
+            />
+          }
+          fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
+          style={{
+            textDecoration: 'none',
+            padding: '10px',
+            color: '#4a4a4a',
+            backgroundColor: '#f2f2f2',
+            border: '1px solid #4a4a4a',
+          }}>
+          {({ loading }) => (loading ? 'Loading document...' : 'Download Pdf')}
+        </PDFDownloadLink>
+      </ContainerBar>
     </Container>
   );
 };
+
+const ContainerBar = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+`;
