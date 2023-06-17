@@ -34,8 +34,6 @@ export const ProductForm: React.FC<IProductsForm> = ({
               onChange={(evt) =>
                 handleProductChange(i, parseInt(evt.target.value) || 0)
               }
-              //oninput="this.value = Math.abs(this.value)"
-              //onChange={(e) => onChange(i, parseInt(e.target.value) || "")}
             />
             <text>{product.nome}</text>
           </div>
