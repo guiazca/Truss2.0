@@ -7,11 +7,32 @@ import { IProduct } from '../../types/product.type';
 import { Products } from '../../constants/productsList';
 import { ProductForm } from '../productForm/ProductForm';
 import { Total } from '../productForm/TotalCalc';
+import { TotalComIva } from '../productForm/TotalComIva';
+import axios from 'axios';
 
 export const Form: React.FC = () => {
   const [client, setClient] = useState<IClient>(initialClient);
   const [products, setProducts] = useState<IProduct[]>(Products);
-  const [total, setTotal] = useState<number>(0);
+
+  const onBlurCep = (codigoPostal: string) => {
+    axios
+      .get(
+        `https://api.duminio.com/ptcp/v2/ptapi6155f9466897a6.83931889/${codigoPostal}`
+      )
+      .then((res) => {
+        const cep = res.data;
+        if (cep[0]) {
+          setClient({
+            ...initialClient,
+            morada: cep[0].Morada,
+            localidade: cep[0].Localidade,
+            concelho: cep[0].Concelho,
+            codigoPostal: cep[0].CodigoPostal.replace('-', ''),
+          });
+        }
+      });
+  };
+
   return (
     <Container>
       <text>Vendedor: Márcia Brasil</text>
@@ -28,7 +49,8 @@ export const Form: React.FC = () => {
               value={client.codigo}
               onChange={(evt) =>
                 setClient({ ...client, codigo: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
         </Row>
         <Row>
@@ -42,7 +64,8 @@ export const Form: React.FC = () => {
               value={client.nome}
               onChange={(evt) =>
                 setClient({ ...client, nome: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
         </Row>
         <Row>
@@ -60,7 +83,7 @@ export const Form: React.FC = () => {
               onChange={(evt) =>
                 setClient({ ...client, codigoPostal: evt.target.value })
               }
-              //onBlur={this.onBlurCep}
+              onBlur={(evt) => onBlurCep(evt.target.value)}
             />
           </Col>
           <Col>
@@ -73,7 +96,8 @@ export const Form: React.FC = () => {
               value={client.morada}
               onChange={(evt) =>
                 setClient({ ...client, morada: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
           <Col>
             <label htmlFor="numeroPorta">numero da porta:</label>
@@ -85,7 +109,8 @@ export const Form: React.FC = () => {
               value={client.numeroDaPorta}
               onChange={(evt) =>
                 setClient({ ...client, numeroDaPorta: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
           <Col>
             <input
@@ -96,7 +121,8 @@ export const Form: React.FC = () => {
               value={client.localidade}
               onChange={(evt) =>
                 setClient({ ...client, localidade: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
           <Col>
             <input
@@ -107,7 +133,8 @@ export const Form: React.FC = () => {
               value={client.concelho}
               onChange={(evt) =>
                 setClient({ ...client, concelho: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
         </Row>
         <Row>
@@ -124,7 +151,8 @@ export const Form: React.FC = () => {
               value={client.contribuinte}
               onChange={(evt) =>
                 setClient({ ...client, contribuinte: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
           <Col>
             <label className="contato" htmlFor="contato">
@@ -139,7 +167,8 @@ export const Form: React.FC = () => {
               value={client.contato}
               onChange={(evt) =>
                 setClient({ ...client, contato: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
           <Col>
             <label className="email" htmlFor="email">
@@ -153,16 +182,16 @@ export const Form: React.FC = () => {
               value={client.email}
               onChange={(evt) =>
                 setClient({ ...client, email: evt.target.value })
-              }></input>
+              }
+            />
           </Col>
         </Row>
       </form>
       <ProductForm products={products} setProducts={setProducts} />
       <Total products={products} />
+      <TotalComIva products={products} />
       {/* <ProductList products={this.state.products} onChange={this.onChange} />
       <Total products={this.state.products} />
-      <Iva products={this.state.products} />
-      <TotalComIva products={this.state.products} />
       <PDFDownloadLink
         document={<MyDocument data={this.state} />}
         fileName={`Orçamento Nome-${client.nome} Código-${client.codigo}.pdf`}
