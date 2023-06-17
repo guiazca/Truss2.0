@@ -54,7 +54,7 @@ export const Form: React.FC = () => {
   return (
     <Container>
       <div>
-        <label htmlFor="vendedor">Vendedor:</label>
+        <label htmlFor="vendedor">Representante:</label>
         <select id="vendedor" value={representante} onChange={handleChange}>
           {representantes.map((nome, index) => (
             <option key={index} value={nome}>
