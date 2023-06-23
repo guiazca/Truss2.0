@@ -107,7 +107,7 @@ export const PDFFile: React.FC<IPDFFile> = ({
           </View>
 
           {products
-            .filter((data) => data.count !== undefined)
+            .filter((data) => data.count !== undefined && data.count !== 0)
             .map((product, i) => (
               <View key={i} style={pdfFileStyles.tableRow}>
                 <View style={pdfFileStyles.tableCol1}>
