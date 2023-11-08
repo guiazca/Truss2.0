@@ -267,6 +267,27 @@ export const Products: IProduct[] = [
       price: 40.9,
       estoque: true,
     },
+  {
+      codigo: "5222",
+      count: undefined,
+      nome: "Shampoo Infusion 1000ml.",
+      price: 45.5,
+      estoque: true,
+    },
+  {
+      codigo: "5223",
+      count: undefined,
+      nome: "Condicionador Infusion 1000ml.",
+      price: 47,
+      estoque: true,
+    },
+  {
+      codigo: "5217",
+      count: undefined,
+      nome: "Shampoo Equilibirum 1000ml.",
+      price: 45.5,
+      estoque: true,
+    },
     {
       codigo: "204 022",
       count: undefined,
@@ -452,7 +473,7 @@ export const Products: IProduct[] = [
     {
       codigo: "407 063",
       count: undefined,
-      nome: "9.99 Very Light Pearl Blonde 60g",
+      nome: "9.89 Very Light Pearl Blonde 60g",
       price: 9.9,
       estoque: true,
     },
