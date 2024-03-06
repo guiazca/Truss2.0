@@ -110,6 +110,13 @@ export const Products: IProduct[] = [
       estoque: true,
     },
     {
+      codigo: "2400",
+      count: undefined,
+      nome: "Mini Net Mask 30g",
+      price: 3.15,
+      estoque: true,
+    },
+    {
       codigo: "103 016",
       count: undefined,
       nome: "Net Mask 550g",
