@@ -363,6 +363,13 @@ export const Products: IProduct[] = [
       estoque: true,
     },
     {
+      codigo: "2000",
+      count: undefined,
+      nome: "Mini Infusion 60G",
+      price: 3.7,
+      estoque: true,
+    },
+    {
       codigo: "203 008",
       count: undefined,
       nome: "Infusion 650ml",
